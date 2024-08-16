@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_vehs", format ["Saving vehicles to slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_vehs", format ["Saving vehicles to slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
 private _vehicles = createHashMap;
 
@@ -38,19 +38,19 @@ private _vehicles = createHashMap;
     private _data = createHashMap;
 
     _data set ["class", typeOf _vehicle];
-    _data set ["cargo", [_vehicle] call DEFUNC(generate,cargoData)];
+    _data set ["cargo", [_vehicle] call EFUNC(generate,cargoData)];
     _data set ["damages", getAllHitPointsDamage _vehicle];
     _data set ["fuel", fuel _vehicle];
     _data set ["generalDamage", damage _vehicle];
     _data set ["id", _vehicle getVariable EGVAR(db,vehIDKey)];
     _data set ["materials", getObjectMaterials _vehicle];
-    _data set ["posDir", [_vehicle] call DEFUNC(generate,posDirData)];
+    _data set ["posDir", [_vehicle] call EFUNC(generate,posDirData)];
     _data set ["textures", getObjectTextures _vehicle];
-    _data set ["turrets", [_vehicle] call DEFUNC(generate,turretData)];
+    _data set ["turrets", [_vehicle] call EFUNC(generate,turretData)];
 
     _vehicles set [format ["vehicle.%1", _forEachIndex], _data];
 } forEach EGVAR(db,vehs);
 
-["vehicles", _vehicles, _slot] call DEFUNC(core,saveData);
+["vehicles", _vehicles, _slot] call EFUNC(core,saveData);
 
-[EGVAR(db,debug), "xpdb_save_fnc_vehs", "Vehicles saved.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_vehs", "Vehicles saved.", false] call EFUNC(utils,debug);

@@ -29,11 +29,11 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_environment", format ["Loading environment data from slot '%1'", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_environment", format ["Loading environment data from slot '%1'", _slot], false] call EFUNC(utils,debug);
 
-private _environment = ["environment", _slot] call DEFUNC(core,loadData);
+private _environment = ["environment", _slot] call EFUNC(core,loadData);
 
-if (isNil "_environment" || (count _environment) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_environment", format ["No environment data to load from slot '%1'", _slot], false] call DEFUNC(utils,debug); };
+if (isNil "_environment" || (count _environment) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_environment", format ["No environment data to load from slot '%1'", _slot], false] call EFUNC(utils,debug); };
 
 private _transitionTime = 15;
 
@@ -49,4 +49,4 @@ private _transitionTime = 15;
     };
 } forEach _environment;
 
-[EGVAR(db,debug), "xpdb_load_fnc_environment", "Environment data loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_environment", "Environment data loaded.", false] call EFUNC(utils,debug);

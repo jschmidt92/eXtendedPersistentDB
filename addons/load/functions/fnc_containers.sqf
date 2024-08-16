@@ -29,14 +29,14 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_loadContainers", format ["Loading containers from slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_loadContainers", format ["Loading containers from slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
-private _containers = ["containers", _slot] call DEFUNC(core,loadData);
+private _containers = ["containers", _slot] call EFUNC(core,loadData);
 
-if (isNil "_containers" || (count _containers) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_loadContainers", format ["No containers to load from slot '%1'", _slot], false] call DEFUNC(utils,debug); };
+if (isNil "_containers" || (count _containers) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_loadContainers", format ["No containers to load from slot '%1'", _slot], false] call EFUNC(utils,debug); };
 
 { deleteVehicle _x } forEach EGVAR(db,conts);
-[EGVAR(db,conts)] call DEFUNC(utils,clearArray);
+[EGVAR(db,conts)] call EFUNC(utils,clearArray);
 
 {
     private _key = _x;
@@ -51,12 +51,12 @@ if (isNil "_containers" || (count _containers) == 1) exitWith { [EGVAR(db,debug)
         if (_class != "") then {
             private _container = createVehicle [_class, [0, 0, 0], [], 0, "NONE"];
 
-            [_container, _cargo] call DEFUNC(utils,applyCargoData);
+            [_container, _cargo] call EFUNC(utils,applyCargoData);
             _container setVariable [EGVAR(db,contIDKey), _id];
             EGVAR(db,conts) pushBack _container;
-            [_container, _posDir] call DEFUNC(utils,applyPosDir);
+            [_container, _posDir] call EFUNC(utils,applyPosDir);
         };
     };
 } forEach keys _containers;
 
-[EGVAR(db,debug), "xpdb_load_fnc_loadContainers", "All containers loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_loadContainers", "All containers loaded.", false] call EFUNC(utils,debug);

@@ -29,14 +29,14 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_vehs", format ["Loading persistent vehicles from slot '%1'", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_vehs", format ["Loading persistent vehicles from slot '%1'", _slot], false] call EFUNC(utils,debug);
 
-private _vehicles = ["vehicles", _slot] call DEFUNC(core,loadData);
+private _vehicles = ["vehicles", _slot] call EFUNC(core,loadData);
 
-if (isNil "_vehicles" || (count _vehicles) <= 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_vehs", format ["No vehicles to load from slot '%1'", _slot], false] call DEFUNC(utils,debug); };
+if (isNil "_vehicles" || (count _vehicles) <= 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_vehs", format ["No vehicles to load from slot '%1'", _slot], false] call EFUNC(utils,debug); };
 
 { deleteVehicle _x } forEach EGVAR(db,vehs);
-[EGVAR(db,vehs)] call DEFUNC(utils,clearArray);
+[EGVAR(db,vehs)] call EFUNC(utils,clearArray);
 
 {
     private _key = _x;
@@ -45,12 +45,12 @@ if (isNil "_vehicles" || (count _vehicles) <= 1) exitWith { [EGVAR(db,debug), "x
     if (_key select [0, 8] == "vehicle.") then {
         private _vehicle = _value getOrDefault ["class", ""] createVehicle [0, 0, 0];
 
-        [_vehicle, _value getOrDefault ["cargo", []]] call DEFUNC(utils,applyCargoData);
-        [_vehicle, _value getOrDefault ["damages", []]] call DEFUNC(utils,applyDamage);
+        [_vehicle, _value getOrDefault ["cargo", []]] call EFUNC(utils,applyCargoData);
+        [_vehicle, _value getOrDefault ["damages", []]] call EFUNC(utils,applyDamage);
         _vehicle setFuel (_value getOrDefault ["fuel", 1]);
         _vehicle setDamage (_value getOrDefault ["generalDamage", 0]);
         _vehicle setVariable [EGVAR(db,vehIDKey), _forEachIndex];
-        [_vehicle, _value getOrDefault ["posDir", []]] call DEFUNC(utils,applyPosDir);
+        [_vehicle, _value getOrDefault ["posDir", []]] call EFUNC(utils,applyPosDir);
 
         {
             private _turretPath = _x;
@@ -75,4 +75,4 @@ if (isNil "_vehicles" || (count _vehicles) <= 1) exitWith { [EGVAR(db,debug), "x
     };
 } forEach _vehicles;
 
-[EGVAR(db,debug), "xpdb_load_fnc_vehs", "Persistent vehicles loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_vehs", "Persistent vehicles loaded.", false] call EFUNC(utils,debug);

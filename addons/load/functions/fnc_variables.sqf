@@ -29,13 +29,13 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_variables", format ["Loading all variables from slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_variables", format ["Loading all variables from slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
-private _allVariables = ["variables", _slot] call DEFUNC(core,loadData);
+private _allVariables = ["variables", _slot] call EFUNC(core,loadData);
 
-if (isNil "_allVariables" || (count _allVariables) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_variables", format ["No variables to load from slot '%1'", _slot], false] call DEFUNC(utils,debug); };
+if (isNil "_allVariables" || (count _allVariables) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_variables", format ["No variables to load from slot '%1'", _slot], false] call EFUNC(utils,debug); };
 
-[EGVAR(db,vars)] call DEFUNC(utils,clearArray);
+[EGVAR(db,vars)] call EFUNC(utils,clearArray);
 
 {
 	private _namespace = _x;
@@ -45,9 +45,9 @@ if (isNil "_allVariables" || (count _allVariables) == 1) exitWith { [EGVAR(db,de
 		private _key = _x;
 		private _value = _y;
 
-		[_namespace, _key, _value] call DEFUNC(save,toNamespace);
+		[_namespace, _key, _value] call EFUNC(save,toNamespace);
 		EGVAR(db,vars) pushBack [_key, _value];
 	} forEach _nameValuePairs;
 } forEach _allVariables;
 
-[EGVAR(db,debug), "xpdb_load_fnc_variables", "All variables loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_variables", "All variables loaded.", false] call EFUNC(utils,debug);

@@ -29,15 +29,15 @@
 
 params [["_container", nil, [objNull, 0, [], sideUnknown, grpNull, ""]]];
 
-if (isNil "_container" || isNull _container) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", "No entity to generate cargo data for.", true] call DEFUNC(utils,debug); };
+if (isNil "_container" || isNull _container) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", "No entity to generate cargo data for.", true] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", format ["Generating cargo data for container '%1'.", _container], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", format ["Generating cargo data for container '%1'.", _container], false] call EFUNC(utils,debug);
 
 private _itemsArray = ["items", getItemCargo _container];
 private _magazinesArray = ["magazines", magazinesAmmoCargo _container];
 private _weaponsArray = ["weapons", weaponsItemsCargo _container];
-private _containersArray = ["containers", [_container] call DEFUNC(helpers,getContainers)];
-private _backpacksArray = ["backpacks", [_container] call DEFUNC(helpers,getBackpacks)];
+private _containersArray = ["containers", [_container] call EFUNC(helpers,getContainers)];
+private _backpacksArray = ["backpacks", [_container] call EFUNC(helpers,getBackpacks)];
 
 private _cargo = [
     _itemsArray,
@@ -47,6 +47,6 @@ private _cargo = [
     _backpacksArray
 ];
 
-[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", format ["Cargo data for container %1 successfully generated.", _container], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_cargoData", format ["Cargo data for container %1 successfully generated.", _container], false] call EFUNC(utils,debug);
 
 _cargo;

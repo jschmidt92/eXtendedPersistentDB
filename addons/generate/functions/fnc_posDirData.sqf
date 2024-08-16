@@ -29,14 +29,14 @@
 
 params [["_entity", nil, [objNull, 0, [], sideUnknown, grpNull, ""]]];
 
-if (isNil "_entity" || isNull _entity) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_posDirData", "No entity to generate position and direction array for.", true] call DEFUNC(utils,debug); };
+if (isNil "_entity" || isNull _entity) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_posDirData", "No entity to generate position and direction array for.", true] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_generate_fnc_posDir", format ["Generating position and direction array for entity '%1'...", _entity], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_posDir", format ["Generating position and direction array for entity '%1'...", _entity], false] call EFUNC(utils,debug);
 
 private _pos = getPosATL _entity;
 private _dir = getDir _entity;
 private _returnData = [_pos, _dir];
 
-[EGVAR(db,debug), "xpdb_generate_fnc_posDir", format ["Position and direction array for entity '%1' has been successfully generated.", _entity], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_posDir", format ["Position and direction array for entity '%1' has been successfully generated.", _entity], false] call EFUNC(utils,debug);
 
 _returnData;

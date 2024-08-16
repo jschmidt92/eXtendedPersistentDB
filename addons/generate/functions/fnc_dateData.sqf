@@ -27,7 +27,7 @@
  * Public: Yes
  */
 
-[EGVAR(db,debug), "xpdb_generate_fnc_dateData", "Generating date and time string...", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_dateData", "Generating date and time string...", false] call EFUNC(utils,debug);
 
 private _return = "";
 private _time = systemTime;
@@ -42,5 +42,5 @@ private _string = format ["%1:%2 %3/%4/%5", _hour, _minute, _month, _day, _year]
 EGVAR(db,saveTime) = _string;
 _return = _string;
 
-[EGVAR(db,debug), "xpdb_generate_fnc_dateData", "Date and time string generated.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_dateData", "Date and time string generated.", false] call EFUNC(utils,debug);
 _return;

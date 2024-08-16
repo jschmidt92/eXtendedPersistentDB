@@ -45,6 +45,6 @@ if (_key isEqualType []) then {
     _return = missionProfileNamespace getVariable [_result, _key # 1];
 };
 
-[EGVAR(db,debug), "xpdb_core_fnc_loadData", format ["Key loaded '%1'.", _key], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_core_fnc_loadData", format ["Key loaded '%1'.", _key], true] call EFUNC(utils,debug);
 
 _return;

@@ -31,9 +31,9 @@ params [["_container", nil, [objNull, 0, [], sideUnknown, grpNull, ""]]];
 
 private _containerID = 0;
 
-if (isNil "_container" || isNull _container) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_containerID", "No container to generate ID for.", true] call DEFUNC(utils,debug); };
+if (isNil "_container" || isNull _container) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_containerID", "No container to generate ID for.", true] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["Generating ID for container '%1'...", _container], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["Generating ID for container '%1'...", _container], false] call EFUNC(utils,debug);
 
 private _containerIndex = (EGVAR(db,conts)) find _container;
 
@@ -42,9 +42,9 @@ if (_containerIndex == -1) then {
     _container setVariable [EGVAR(db,contIDKey), _containerID];
     (EGVAR(db,conts)) pushback _container;
 
-    [EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["ID for container '%1' has been successfully generated.", _container], false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["ID for container '%1' has been successfully generated.", _container], false] call EFUNC(utils,debug);
 } else {
-    [EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["Vehicle '%1' already had an existing ID.", _container], false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_containerID", format ["Vehicle '%1' already had an existing ID.", _container], false] call EFUNC(utils,debug);
 	_containerID = ((EGVAR(db,conts)) # _containerIndex) getVariable EGVAR(db,contIDKey);
 };
 

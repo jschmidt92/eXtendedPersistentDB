@@ -43,11 +43,15 @@ if (_value isEqualType createHashMap) then {
 
 if (_value isEqualType []) then {
     _hashMap = createHashMapFromArray _value
-} else {
-    _hashMap set [_key, _value];
 };
+
+// if (_value isEqualType []) then {
+//     _hashMap = createHashMapFromArray _value
+// } else {
+//     _hashMap set [_key, _value];
+// };
 
 _hashMap set ["hashKey", _hashKey];
 
 missionProfileNamespace setVariable [_hashKey, _hashMap];
-[EGVAR(db,debug), "xpdb_core_fnc_saveData", format ["Saved data to '%1'.", _hashKey], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_core_fnc_saveData", format ["Saved data to '%1'.", _hashKey], true] call EFUNC(utils,debug);

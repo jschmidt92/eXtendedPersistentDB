@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_environment", format ["Saving environment info to slot '%1'.", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_environment", format ["Saving environment info to slot '%1'.", _slot], false] call EFUNC(utils,debug);
 
 private _environment = createHashMap;
 
@@ -38,4 +38,4 @@ _environment set ["rain", rain];
 _environment set ["fog", fog];
 _environment set ["overcast", overcast];
 
-["environment", _environment, _slot] call DEFUNC(core,saveData);
+["environment", _environment, _slot] call EFUNC(core,saveData);

@@ -31,9 +31,9 @@ params [["_vehicle", nil, [objNull, 0, [], sideUnknown, grpNull, ""]]];
 
 private _vehicleID = 0;
 
-if (isNil "_vehicle" || isNull _vehicle) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", "No vehicle to generate ID for.", true] call DEFUNC(utils,debug); };
+if (isNil "_vehicle" || isNull _vehicle) exitWith {[EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", "No vehicle to generate ID for.", true] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["Generating ID for vehicle '%1'...", _vehicle], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["Generating ID for vehicle '%1'...", _vehicle], false] call EFUNC(utils,debug);
 
 private _vehicleIndex = (EGVAR(db,vehs)) find _vehicle;
 
@@ -42,9 +42,9 @@ if (_vehicleIndex == -1) then {
     _vehicle setVariable [EGVAR(db,vehIDKey), _vehicleID];
     (EGVAR(db,vehs)) pushback _vehicle;
 
-    [EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["ID for vehicle '%1' has been successfully generated.", _vehicle], false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["ID for vehicle '%1' has been successfully generated.", _vehicle], false] call EFUNC(utils,debug);
 } else {
-    [EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["Vehicle '%1' already had an existing ID.", _vehicle], false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_vehicleID", format ["Vehicle '%1' already had an existing ID.", _vehicle], false] call EFUNC(utils,debug);
 	_vehicleID = ((EGVAR(db,vehs)) # _vehicleIndex) getVariable EGVAR(db,vehIDKey);
 };
 

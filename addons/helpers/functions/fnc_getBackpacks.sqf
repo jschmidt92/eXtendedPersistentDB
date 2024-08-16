@@ -33,7 +33,7 @@ private _backpacksArray = [];
 
 {
     private _class = typeOf _x;
-    private _cargo = [_x] call DEFUNC(generate,cargoData);
+    private _cargo = [_x] call EFUNC(generate,cargoData);
 
     private _currentBackpackArray = [];
 

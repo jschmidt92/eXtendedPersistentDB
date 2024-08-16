@@ -31,11 +31,11 @@ EGVAR(db,selectedList) = [EGVAR(db,listBox)] call DFUNC(getSelectedList);
 
 if (EGVAR(db,selectedList) != 0) then {
     private _deletedItem = EGVAR(db,slots) deleteAt EGVAR(db,selectedList);
-    [EGVAR(db,debug), "xpdb_db_fnc_deleteSlot", format ["Deleted %1 from persistent list.", _deletedItem], false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_db_fnc_deleteSlot", format ["Deleted %1 from persistent list.", _deletedItem], false] call EFUNC(utils,debug);
 
-    [EGVAR(db,selectedList)] call DEFUNC(core,clearSave);
+    [EGVAR(db,selectedList)] call EFUNC(core,clearSave);
     profileNamespace setVariable [QEGVAR(db,pListKey), EGVAR(db,slots)];
     [EGVAR(db,listBox)] call DFUNC(updatePersistentList);
 } else {
-    [EGVAR(db,debug), "xpdb_db_fnc_deleteSlot", "Can not delete empty slot.", false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_db_fnc_deleteSlot", "Can not delete empty slot.", false] call EFUNC(utils,debug);
 };

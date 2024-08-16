@@ -31,14 +31,14 @@
 params [["_leader", objNull, [objNull]]];
 
 if (isNull _leader) exitWith {
-    [EGVAR(db,debug), "xpdb_generate_fnc_groupData", "No entity to generate group data for.", true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_groupData", "No entity to generate group data for.", true] call EFUNC(utils,debug);
     createHashMap
 };
 
 private _groupArray = units group _leader;
 private _groupData = createHashMap;
 
-[EGVAR(db,debug), "xpdb_generate_fnc_groupData", format ["Generating group data for leader '%1'...", _leader], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_groupData", format ["Generating group data for leader '%1'...", _leader], false] call EFUNC(utils,debug);
 
 {
     if (_x != _leader && alive _x) then {
@@ -46,6 +46,6 @@ private _groupData = createHashMap;
     };
 } forEach _groupArray;
 
-[EGVAR(db,debug), "xpdb_generate_fnc_groupData", format ["Group data for leader '%1' has been successfully generated.", _leader], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_groupData", format ["Group data for leader '%1' has been successfully generated.", _leader], false] call EFUNC(utils,debug);
 
 _groupData

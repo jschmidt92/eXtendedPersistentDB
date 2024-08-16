@@ -35,10 +35,10 @@ private _configPath = "missionConfigFile >> 'CfgXPDB' >> 'load'";
 private _config = call compile _configPath;
 
 if (isNull _config) exitWith {
-    [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Mission Config: eXtended Persistent Database config '%1' not found. eXtended Persistent Database load process skipped.", _configPath], true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Mission Config: eXtended Persistent Database config '%1' not found. eXtended Persistent Database load process skipped.", _configPath], true] call EFUNC(utils,debug);
 };
 
-[EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Initializing eXtended Persistent Database load for slot '%1'", _slot], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Initializing eXtended Persistent Database load for slot '%1'", _slot], true] call EFUNC(utils,debug);
 
 private _loadEntries = "true" configClasses (_config);
 
@@ -49,15 +49,15 @@ private _loadEntries = "true" configClasses (_config);
     
     if (_functionName != "") then {
         private _function = call compile _functionName;
-        private _savedData = [_entryName, _slot] call DEFUNC(core,loadData);
+        private _savedData = [_entryName, _slot] call EFUNC(core,loadData);
 
         if (!isNil "_savedData") then {
             _args pushBack _savedData;
             _args call _function;
 
-            [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Loading '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call DEFUNC(utils,debug);
+            [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Loading '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
         };
     };
 } forEach _loadEntries;
 
-[EGVAR(db,debug), "xpdb_load_fnc_custom", "eXtended Persistent Database load completed.", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_custom", "eXtended Persistent Database load completed.", true] call EFUNC(utils,debug);

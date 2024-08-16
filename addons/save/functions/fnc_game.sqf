@@ -30,11 +30,11 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_game", format ["Saving progress to slot '%1'...", _slot], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_game", format ["Saving progress to slot '%1'...", _slot], true] call EFUNC(utils,debug);
 
-[_slot] call DEFUNC(core,clearSave);
+[_slot] call EFUNC(core,clearSave);
 
-if (EGVAR(db,native) == 1) then {
+if (EGVAR(db,native)) then {
     [_slot] spawn DFUNC(containers);
     [_slot] call DFUNC(custom);
     [_slot] call DFUNC(player);
@@ -47,4 +47,4 @@ if (EGVAR(db,native) == 1) then {
 };
 
 saveMissionProfileNamespace;
-[EGVAR(db,debug), "xpdb_save_fnc_game", "Progress has been saved", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_game", "Progress has been saved", true] call EFUNC(utils,debug);

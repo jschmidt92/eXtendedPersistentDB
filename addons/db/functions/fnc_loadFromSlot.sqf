@@ -29,10 +29,10 @@
 
 EGVAR(db,selectedList) = [EGVAR(db,listBox)] call DFUNC(getSelectedList);
 
-[EGVAR(db,debug), "xpdb_db_fnc_loadFromSlot", "Loading progress...", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_loadFromSlot", "Loading progress...", false] call EFUNC(utils,debug);
 
 if (EGVAR(db,selectedList) != 0) then {
-    [EGVAR(db,selectedList)] call DEFUNC(load,game);
+    [EGVAR(db,selectedList)] call EFUNC(load,game);
 } else {
-    [EGVAR(db,debug), "xpdb_db_fnc_loadFromSlot", "Empty slot selected. Nothing to load from here.", false] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_db_fnc_loadFromSlot", "Empty slot selected. Nothing to load from here.", false] call EFUNC(utils,debug);
 };

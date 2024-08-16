@@ -34,10 +34,10 @@ private _configPath = "missionConfigFile >> 'CfgXPDB' >> 'save'";
 private _config = call compile _configPath;
 
 if (isNull _config) exitWith {
-    [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Mission Config: eXtended Persistent Database config '%1' not found. eXtended Persistent Database save process skipped.", _configPath], true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Mission Config: eXtended Persistent Database config '%1' not found. eXtended Persistent Database save process skipped.", _configPath], true] call EFUNC(utils,debug);
 };
 
-[EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Initializing eXtended Persistent Database save for slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Initializing eXtended Persistent Database save for slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
 private _saveEntries = "true" configClasses (_config);
 
@@ -51,10 +51,10 @@ private _saveEntries = "true" configClasses (_config);
         private _result = _args call _function;
         
         if (!isNil "_result") then {
-            [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Saving '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call DEFUNC(utils,debug);
-            [_entryName, _result, _slot] call DEFUNC(core,saveData);
+            [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Saving '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+            [_entryName, _result, _slot] call EFUNC(core,saveData);
         };
     };
 } forEach _saveEntries;
 
-[EGVAR(db,debug), "xpdb_save_fnc_custom", "eXtended Persistent Database save completed.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_custom", "eXtended Persistent Database save completed.", false] call EFUNC(utils,debug);

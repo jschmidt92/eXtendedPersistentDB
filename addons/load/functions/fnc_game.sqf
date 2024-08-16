@@ -30,11 +30,11 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_game", format ["Loading progress from slot '%1'...", _slot], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_game", format ["Loading progress from slot '%1'...", _slot], true] call EFUNC(utils,debug);
 
-[_slot] call DEFUNC(utils,clearGarbage);
+[_slot] call EFUNC(utils,clearGarbage);
 
-if (EGVAR(db,native) == 1) then {
+if (EGVAR(db,native)) then {
     [_slot] spawn DFUNC(containers);
     [_slot] call DFUNC(custom);
     [_slot] call DFUNC(player);
@@ -47,4 +47,4 @@ if (EGVAR(db,native) == 1) then {
 };
 
 
-[EGVAR(db,debug), "xpdb_load_fnc_game", "Progress has been successfully loaded.", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_game", "Progress has been successfully loaded.", true] call EFUNC(utils,debug);

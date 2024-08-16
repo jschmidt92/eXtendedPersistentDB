@@ -44,7 +44,7 @@ params ["_container", "_containersArray"];
         private _currentInstance = _x # 1;
 
         if (_currentClass == _class && [_currentInstance] call DFUNC(isContainerEmpty)) exitWith {
-            [_currentInstance, _cargo] call DEFUNC(utils,applyCargoData);
+            [_currentInstance, _cargo] call EFUNC(utils,applyCargoData);
         };
         true
     } count (everyContainer _container);

@@ -51,7 +51,7 @@ if ((count _vehicleData) <= 1) exitWith { [EGVAR(db,debug), "xpdb_utils_fnc_addU
 
 waitUntil { (count EGVAR(db,vehs)) > 0 };
 
-private _vehInst = [_vehAssgnID] call DEFUNC(helpers,findAssignedVeh);
+private _vehInst = [_vehAssgnID] call EFUNC(helpers,findAssignedVeh);
 		
 if (!(isNil "_vehInst") && !(isNil "_vehRoleArr")) then {
 	private _role = _vehRoleArr # 0;

@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_player", format ["Saving player data to slot '%1'", _slot], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_player", format ["Saving player data to slot '%1'", _slot], true] call EFUNC(utils,debug);
 
-private _playerData = [player, true] call DEFUNC(generate,unitData);
-["player", _playerData, _slot] call DEFUNC(core,saveData);
+private _playerData = [player, true] call EFUNC(generate,unitData);
+["player", _playerData, _slot] call EFUNC(core,saveData);

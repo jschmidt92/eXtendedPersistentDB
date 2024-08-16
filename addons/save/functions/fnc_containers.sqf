@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_containers", format ["Saving containers to slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_containers", format ["Saving containers to slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
 private _containers = createHashMap;
 
@@ -38,13 +38,13 @@ private _containers = createHashMap;
     private _data = createHashMap;
 
     _data set ["class", typeOf _container];
-    _data set ["cargo", [_container] call DEFUNC(generate,cargoData)];
+    _data set ["cargo", [_container] call EFUNC(generate,cargoData)];
     _data set ["id", _forEachIndex];
-    _data set ["posDir", [_container] call DEFUNC(generate,posDirData)];
+    _data set ["posDir", [_container] call EFUNC(generate,posDirData)];
 
     _containers set [format ["container.%1", _forEachIndex], _data];
 } forEach EGVAR(db,conts);
 
-["containers", _containers, _slot] call DEFUNC(core,saveData);
+["containers", _containers, _slot] call EFUNC(core,saveData);
 
-[EGVAR(db,debug), "xpdb_save_fnc_containers", "Containers saved.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_containers", "Containers saved.", false] call EFUNC(utils,debug);

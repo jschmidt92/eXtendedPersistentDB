@@ -30,7 +30,7 @@
 
 params [["_container", nil, [objNull, 0, [], sideUnknown, grpNull, ""]], ["_cargoArray", [], [[]]]];
 
-if (isNil "_container" || _cargoArray isEqualTo []) exitWith { [EGVAR(db,debug), "xpdb_utils_fnc_applyCargoData", "No container to add cargo to.", true] call DEFUNC(utils,debug); };
+if (isNil "_container" || _cargoArray isEqualTo []) exitWith { [EGVAR(db,debug), "xpdb_utils_fnc_applyCargoData", "No container to add cargo to.", true] call EFUNC(utils,debug); };
 
 clearItemCargo _container;
 clearMagazineCargo _container;
@@ -42,11 +42,11 @@ clearBackpackCargo _container;
     private _value = _x # 1;
 
     switch (_key) do {
-        case "containers": { [_container, _value] call DEFUNC(helpers,addContainers); };
-        case "backpacks": { [_container, _value] call DEFUNC(helpers,addBackpacks); };
-        case "items": { [_container, _value, { params ["_c", "_n", "_cnt"]; _c addItemCargo [_n, _cnt]; }] call DEFUNC(helpers,addAllCargo); };
-        case "magazines": { [_container, _value] call DEFUNC(helpers,addMagazines); };
-        case "weapons": { [_container, _value] call DEFUNC(helpers,addWeapons); };
+        case "containers": { [_container, _value] call EFUNC(helpers,addContainers); };
+        case "backpacks": { [_container, _value] call EFUNC(helpers,addBackpacks); };
+        case "items": { [_container, _value, { params ["_c", "_n", "_cnt"]; _c addItemCargo [_n, _cnt]; }] call EFUNC(helpers,addAllCargo); };
+        case "magazines": { [_container, _value] call EFUNC(helpers,addMagazines); };
+        case "weapons": { [_container, _value] call EFUNC(helpers,addWeapons); };
     };
     true
 } count (_cargoArray);

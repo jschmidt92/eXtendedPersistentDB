@@ -27,7 +27,7 @@
  * Public: Yes
  */
 
-[true, "xpdb_db_fnc_init", format ["Starting '%1'...", Scenario_Name], false] call DEFUNC(utils,debug);
+[true, "xpdb_db_fnc_init", format ["Starting '%1'...", Scenario_Name], false] call EFUNC(utils,debug);
 
 EGVAR(db,configDone) = false;
 [] call DFUNC(config);

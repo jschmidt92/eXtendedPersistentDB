@@ -29,22 +29,22 @@
 
 params [["_listID", -1, [0]]];
 
-if !(_listID > -1) exitWith { [EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", format ["Invalid input for listID '%1'.", _listID], false] call DEFUNC(utils,debug); };
+if !(_listID > -1) exitWith { [EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", format ["Invalid input for listID '%1'.", _listID], false] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Updating persistent slots...", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Updating persistent slots...", true] call EFUNC(utils,debug);
 
-[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Clearing slots...", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Clearing slots...", false] call EFUNC(utils,debug);
 lbClear _listID;
-[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Cleared slots.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Cleared slots.", false] call EFUNC(utils,debug);
 
-[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Loading slots from profileNamespace...", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Loading slots from profileNamespace...", false] call EFUNC(utils,debug);
 private _slotArray = profileNamespace getVariable ["xpdb_db_pListKey", EGVAR(db,slots)];
 
 if (isNil "_slotArray" || count _slotArray == 1) then {
-	[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "No saves found, using default slot instead.", false] call DEFUNC(utils,debug);
+	[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "No saves found, using default slot instead.", false] call EFUNC(utils,debug);
 	EGVAR(db,slots) = EGVAR(db,defaultSlots);
 } else {
-	[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Saves found. Now populating list with save slots.", false] call DEFUNC(utils,debug);
+	[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Saves found. Now populating list with save slots.", false] call EFUNC(utils,debug);
 	EGVAR(db,slots) = _slotArray;
 };
 
@@ -53,4 +53,4 @@ if (isNil "_slotArray" || count _slotArray == 1) then {
 	true
 } count (EGVAR(db,slots));
 
-[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Persistent tab updated.", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Persistent tab updated.", true] call EFUNC(utils,debug);

@@ -43,7 +43,7 @@ params ["_container", "_backpacksArray"];
 
     {
         if (typeOf _x == _class && [_x] call DFUNC(isContainerEmpty)) exitWith {
-            [_x, _cargo] call DEFUNC(utils,applyCargoData);
+            [_x, _cargo] call EFUNC(utils,applyCargoData);
         };
         true
     } count (everyBackpack _container);

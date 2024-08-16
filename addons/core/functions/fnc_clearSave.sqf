@@ -30,17 +30,17 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_core_fnc_clearSave", "Clearing save...", true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_core_fnc_clearSave", "Clearing save...", true] call EFUNC(utils,debug);
 
 if (isNil "_slot") then {
-    [EGVAR(db,debug), "xpdb_core_fnc_clearSave", "Clearing all saves.", true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_core_fnc_clearSave", "Clearing all saves.", true] call EFUNC(utils,debug);
     {
-        if (_x select [0, 15] == "xpdb_armadbcore.") then { missionProfileNamespace setVariable [_x, nil] };
+        if (_x select [0, 16] == "xpdb_armadbcore.") then { missionProfileNamespace setVariable [_x, nil] };
     } forEach (allVariables missionProfileNamespace);
 } else {
-    [EGVAR(db,debug), "xpdb_core_fnc_clearSave", format ["Clearing save for slot '%1'.", _slot], true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_core_fnc_clearSave", format ["Clearing save for slot '%1'.", _slot], true] call EFUNC(utils,debug);
     {
-        if (_x select [0, 16] == format ["xpdb_armadbcore.%1", _slot]) then { missionProfileNamespace setVariable [_x, nil] };
+        if (_x select [0, 17] == format ["xpdb_armadbcore.%1", _slot]) then { missionProfileNamespace setVariable [_x, nil] };
     } forEach (allVariables missionProfileNamespace);
 };
 

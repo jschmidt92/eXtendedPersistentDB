@@ -31,13 +31,13 @@
 params [["_unit", objNull, [objNull]], ["_isLeader", false, [false]]];
 
 if (isNull _unit) exitWith {
-    [EGVAR(db,debug), "xpdb_generate_fnc_unitData", "No unit to generate data for.", true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_generate_fnc_unitData", "No unit to generate data for.", true] call EFUNC(utils,debug);
     createHashMap
 };
 
 private _unitData = createHashMap;
 
-[EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Generating data for '%1' (isLeader = '%2')...", _unit, _isLeader], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Generating data for '%1' (isLeader = '%2')...", _unit, _isLeader], false] call EFUNC(utils,debug);
 
 _unitData set ["assignedTeam", assignedTeam _unit];
 _unitData set ["class", typeOf _unit];
@@ -68,7 +68,7 @@ if (vehicle _unit != _unit) then {
 
         if (_unit == _assignedUnit) exitWith {
             _vehicleData set ["role", [_role, _cargoIndex, _turretPath, _personTurret]];
-            [EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Vehicle role data for '%1' generated: '%2'", _unit, _vehicleData get "role"], false] call DEFUNC(utils,debug);
+            [EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Vehicle role data for '%1' generated: '%2'", _unit, _vehicleData get "role"], false] call EFUNC(utils,debug);
         };
     } forEach _vehicleCrew;
 
@@ -81,6 +81,6 @@ if (_isLeader) then {
     _unitData set ["groupOrders", [_unit] call DFUNC(groupOrders)];
 };
 
-[EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Data for '%1' (isLeader = '%2') has been successfully generated.", _unit, _isLeader], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_generate_fnc_unitData", format ["Data for '%1' (isLeader = '%2') has been successfully generated.", _unit, _isLeader], false] call EFUNC(utils,debug);
 
 _unitData

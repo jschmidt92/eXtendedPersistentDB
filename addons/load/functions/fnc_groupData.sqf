@@ -31,7 +31,7 @@
 
 params [["_groupData", createHashMap, [createHashMap]], ["_leader", objNull, [objNull]]];
 
-if (count _groupData <= 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_groupData", "No group data to load.", false] call DEFUNC(utils,debug); };
+if (count _groupData <= 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_groupData", "No group data to load.", false] call EFUNC(utils,debug); };
 
 private _class = _groupData getOrDefault ["class", ""];
 private _side = _groupData getOrDefault ["side", sideUnknown];
@@ -40,7 +40,7 @@ private _unit = (createGroup _side) createUnit [_class, [0, 0, 0], [], 0, "FORM"
 
 waitUntil { !isNull _unit };
 
-[EGVAR(db,debug), "xpdb_load_fnc_unitData", format ["Loading unit group data for '%1'.", _unit], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_unitData", format ["Loading unit group data for '%1'.", _unit], false] call EFUNC(utils,debug);
 
 {
     private _key = _x;
@@ -48,29 +48,29 @@ waitUntil { !isNull _unit };
 
     switch (_key) do {
         case "assignedTeam": { _unit assignTeam _value; };
-        case "damages": { [_unit, _value] call DEFUNC(utils,applyDamage); };
+        case "damages": { [_unit, _value] call EFUNC(utils,applyDamage); };
         case "face": { _unit setFace _value; };
         case "fatigue": { _unit setFatigue _value; };
         case "formDir": { _unit setFormDir _value; };
         case "generalDamage": { _unit setDamage _value; };
-        case "groupOrders": { [_unit, _value] call DEFUNC(helpers,setGroupOrders); };
+        case "groupOrders": { [_unit, _value] call EFUNC(helpers,setGroupOrders); };
         case "loadout": { _unit setUnitLoadout _value; };
-        case "name": { [_unit, _value] call DEFUNC(helpers,restoreName); };
-        case "orders": { [_unit, _value] call DEFUNC(helpers,setOrders); };
+        case "name": { [_unit, _value] call EFUNC(helpers,restoreName); };
+        case "orders": { [_unit, _value] call EFUNC(helpers,setOrders); };
         case "pitch": { _unit setPitch _value; };
-        case "posDir": { [_unit, _value] call DEFUNC(utils,applyPosDir); };
-        case "rating": { [_unit, _value] call DEFUNC(helpers,setRating); };
-        case "skills": { [_unit, _value] call DEFUNC(helpers,setSkills); };
+        case "posDir": { [_unit, _value] call EFUNC(utils,applyPosDir); };
+        case "rating": { [_unit, _value] call EFUNC(helpers,setRating); };
+        case "skills": { [_unit, _value] call EFUNC(helpers,setSkills); };
         case "speaker": { _unit setSpeaker _value; };
         case "stamina": { _unit setStamina _value; };
-        case "variables": { [_unit, _value] call DEFUNC(helpers,setVariables); };
-        case "vehicle": { [_unit, _value] spawn DEFUNC(utils,addUnitToVehicle); };
+        case "variables": { [_unit, _value] call EFUNC(helpers,setVariables); };
+        case "vehicle": { [_unit, _value] spawn EFUNC(utils,addUnitToVehicle); };
     };
 } forEach _groupData;
 
 _unit setVariable ["BIS_enableRandomization", false];
 [_unit] joinSilent _leader;
 
-[EGVAR(db,debug), "xpdb_load_fnc_unitData", "Unit group data loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_unitData", "Unit group data loaded.", false] call EFUNC(utils,debug);
 
 _unit

@@ -38,8 +38,8 @@ if (_function == "") then { _function = "DEBUG" };
 if (isNil "_visible") then { _visible = false };
 
 if (_debug) then {
-	diag_log text format ["[ArmaDatabaseFramework: '%1'] %2", _function, _text];
+	diag_log text format ["[eXtendedPersistentDB: '%1'] %2", _function, _text];
 	if (_visible) then {
-		systemChat format ["[ArmaDatabaseFramework: %1] %2", _function, _text];
+		systemChat format ["[eXtendedPersistentDB: %1] %2", _function, _text];
 	};
 };

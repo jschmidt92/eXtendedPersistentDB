@@ -30,15 +30,15 @@
 
 params [["_object", nil, [objNull, 0, [], sideUnknown, grpNull, ""]], ["_array", [], [[]]]];
 
-if (isNil "_object" || isNull _object) exitWith { [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", "No object to make persistent.", true] call DEFUNC(utils,debug); };
+if (isNil "_object" || isNull _object) exitWith { [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", "No object to make persistent.", true] call EFUNC(utils,debug); };
 
-[EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["Processing '%1' persistence...", _object], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["Processing '%1' persistence...", _object], true] call EFUNC(utils,debug);
 
 private _objectID = _array find _object;
 
 if (_objectID == -1) then {
     _array pushback _object;
-    [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["'%1' is now persistent.", _object], true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["'%1' is now persistent.", _object], true] call EFUNC(utils,debug);
 } else {
-    [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["'%1' is already persistent.", _object], true] call DEFUNC(utils,debug);
+    [EGVAR(db,debug), "xpdb_db_fnc_makePersistent", format ["'%1' is already persistent.", _object], true] call EFUNC(utils,debug);
 };

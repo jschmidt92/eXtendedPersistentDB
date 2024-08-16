@@ -30,7 +30,7 @@
 
 params [["_entity", nil, [objNull, 0, [], sideUnknown, grpNull, ""]], ["_hitpointsArray", [], [[], createHashMap]]];
 
-if (isNil "_entity" || _hitpointsArray isEqualTo []) exitWith { [EGVAR(db,debug), "xpdb_utils_fnc_applyDamage", "No entity to apply damage to.", true] call DEFUNC(utils,debug); };
+if (isNil "_entity" || _hitpointsArray isEqualTo []) exitWith { [EGVAR(db,debug), "xpdb_utils_fnc_applyDamage", "No entity to apply damage to.", true] call EFUNC(utils,debug); };
 
 {
     private _key = _x;

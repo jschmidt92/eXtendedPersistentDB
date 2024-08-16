@@ -32,5 +32,5 @@ params ["_leader", "_group"];
 {
     private _key = _x;
     private _value = _group get _key;
-    [_value, _leader] spawn DEFUNC(load,groupData);
+    [_value, _leader] spawn EFUNC(load,groupData);
 } forEach _group;

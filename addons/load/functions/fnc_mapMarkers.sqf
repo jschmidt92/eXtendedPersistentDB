@@ -29,16 +29,16 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", format ["Loading map markers from slot '%1'...", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", format ["Loading map markers from slot '%1'...", _slot], false] call EFUNC(utils,debug);
 
 private _allMarkers = allMapMarkers;
 
 { deleteVehicle _x } forEach _allMarkers;
-[_allMarkers] call DEFUNC(utils,clearArray);
+[_allMarkers] call EFUNC(utils,clearArray);
 
-private _markers = ["markers", _slot] call DEFUNC(core,loadData);
+private _markers = ["markers", _slot] call EFUNC(core,loadData);
 
-if (isNil "_markers" || (count _markers) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", format ["No markers to load from slot '%1'.", _slot], true] call DEFUNC(utils,debug); };
+if (isNil "_markers" || (count _markers) == 1) exitWith { [EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", format ["No markers to load from slot '%1'.", _slot], true] call EFUNC(utils,debug); };
 
 {
     private _namespace = _x;
@@ -66,4 +66,4 @@ if (isNil "_markers" || (count _markers) == 1) exitWith { [EGVAR(db,debug), "xpd
     };
 } forEach _markers;
 
-[EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", "Map markers loaded.", false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_mapMarkers", "Map markers loaded.", false] call EFUNC(utils,debug);

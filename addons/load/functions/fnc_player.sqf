@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_load_fnc_player", format ["Loading player data from slot '%1'.", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_load_fnc_player", format ["Loading player data from slot '%1'.", _slot], false] call EFUNC(utils,debug);
 
-private _unitData = ["player", _slot] call DEFUNC(core,loadData);
+private _unitData = ["player", _slot] call EFUNC(core,loadData);
 [player, _unitData, objNull] call DFUNC(unitData);

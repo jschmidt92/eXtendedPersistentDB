@@ -34,7 +34,7 @@ private _containersArray = [];
 {
     private _class = _x # 0;
     private _instance = _x # 1;
-    private _cargo = [_instance] call DEFUNC(generate,cargoData);
+    private _cargo = [_instance] call EFUNC(generate,cargoData);
 
     private _currentContainerArray = [];
 

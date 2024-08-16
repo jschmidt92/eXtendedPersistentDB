@@ -37,18 +37,18 @@ switch (_typeOfTarget) do {
     case 0: {
         if (_cursorTarget isKindOf "Air" || _cursorTarget isKindOf "LandVehicle" || _cursorTarget isKindOf "Ship") then {
             _objectToSave = _cursorTarget;
-            [_objectToSave] call DEFUNC(generate,vehicleID);
-            [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Added '%1' to save queue", _cursorTarget], true] call DEFUNC(utils,debug);
+            [_objectToSave] call EFUNC(generate,vehicleID);
+            [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Added '%1' to save queue", _cursorTarget], true] call EFUNC(utils,debug);
         } else {
-            [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Target '%1' is not a vehicle", _cursorTarget], true] call DEFUNC(utils,debug);
+            [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Target '%1' is not a vehicle", _cursorTarget], true] call EFUNC(utils,debug);
         };
     };
     case 1: {
         _objectToSave = _cursorTarget;
-        [_objectToSave] call DEFUNC(generate,containerID);
-        [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Added '%1' to save queue", _cursorTarget], true] call DEFUNC(utils,debug);
+        [_objectToSave] call EFUNC(generate,containerID);
+        [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Added '%1' to save queue", _cursorTarget], true] call EFUNC(utils,debug);
     };
     default {
-        [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Unknown type of target '%1'", _typeOfTarget], true] call DEFUNC(utils,debug);
+        [EGVAR(db,debug), "xpdb_db_fnc_saveTarget", format ["Unknown type of target '%1'", _typeOfTarget], true] call EFUNC(utils,debug);
     };
 };

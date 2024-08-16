@@ -29,7 +29,7 @@
 
 params [["_slot", nil, [0]]];
 
-[EGVAR(db,debug), "xpdb_save_fnc_mapMarkers", format ["Saving map markers to slot '%1'.", _slot], false] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_save_fnc_mapMarkers", format ["Saving map markers to slot '%1'.", _slot], false] call EFUNC(utils,debug);
 
 private _markers = createHashMap;
 private _count = 1;
@@ -60,4 +60,4 @@ private _allMarkers = allMapMarkers;
     _markers set [format ["marker.%1", _forEachIndex], _data];
 } forEach _allMarkers;
 
-["markers", _markers, _slot] call DEFUNC(core,saveData);
+["markers", _markers, _slot] call EFUNC(core,saveData);

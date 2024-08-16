@@ -30,7 +30,7 @@
 EGVAR(db,debug) = ["DEBUG_MODE", 0] call BFUNC(getParamValue);
 if (EGVAR(db,debug) == 1) then { EGVAR(db,debug) = true; } else { EGVAR(db,debug) = false; };
 
-[EGVAR(db,debug), "xpdb_db_fnc_config", format ["Configuring '%1'...", Scenario_Name], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_config", format ["Configuring '%1'...", Scenario_Name], true] call EFUNC(utils,debug);
 
 EGVAR(db,host) = player;
 EGVAR(db,prefix) = "XPDB_ARMADBCORE";
@@ -45,4 +45,4 @@ EGVAR(db,native) = ["NATIVE_MODE", 1] call BFUNC(getParamValue);
 if (EGVAR(db,native) == 1) then { EGVAR(db,native) = true; } else { EGVAR(db,native) = false; };
 
 EGVAR(db,configDone) = true;
-[EGVAR(db,debug), "xpdb_db_fnc_config", format ["Finished configuring '%1'.", Scenario_Name], true] call DEFUNC(utils,debug);
+[EGVAR(db,debug), "xpdb_db_fnc_config", format ["Finished configuring '%1'.", Scenario_Name], true] call EFUNC(utils,debug);
