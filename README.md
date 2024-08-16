@@ -3,20 +3,20 @@
 ![CoverImage](images/cover_image.jpg)
 
 <p align="center">
-	<a href="https://github.com/jschmidt92/eXtendedPersistentDB/releases/latest">
-		<img src="https://img.shields.io/github/v/release/jschmidt92/eXtendedPersistentDB?label=latest%20release" alt="latest-release">
+	<a href="https://github.com/jschmidt92/eXtendedPersistentDatabase/releases/latest">
+		<img src="https://img.shields.io/github/v/release/jschmidt92/eXtendedPersistentDatabase?label=latest%20release" alt="latest-release">
 	</a>
-		<a href="https://github.com/jschmidt92/eXtendedPersistentDB/issues">
-		<img src="https://img.shields.io/github/issues/jschmidt92/eXtendedPersistentDB" alt="open-issues">
+		<a href="https://github.com/jschmidt92/eXtendedPersistentDatabase/issues">
+		<img src="https://img.shields.io/github/issues/jschmidt92/eXtendedPersistentDatabase" alt="open-issues">
 	</a>
-	<a href="https://github.com/jschmidt92/eXtendedPersistentDB/actions/workflows/build.yml">
-		<img src="https://img.shields.io/github/actions/workflow/status/jschmidt92/eXtendedPersistentDB/build.yml?branch=master" alt="build-status">
+	<a href="https://github.com/jschmidt92/eXtendedPersistentDatabase/actions/workflows/build.yml">
+		<img src="https://img.shields.io/github/actions/workflow/status/jschmidt92/eXtendedPersistentDatabase/build.yml?branch=master" alt="build-status">
 	</a>
 </p>
 
 ## Description
 
-eXtended Persistent DB is the mod version of [Arma Persistent Core System](https://github.com/NikolaiF90/ArmaPersistentCoreSystem)
+eXtended Persistent Database is the mod version of [Arma Persistent Core System](https://github.com/NikolaiF90/ArmaPersistentCoreSystem)
 
 ## Features
 
@@ -28,7 +28,7 @@ eXtended Persistent DB is the mod version of [Arma Persistent Core System](https
 
 ## Installation
 
-- Download the latest release from the [releases](https://github.com/jschmidt92/eXtendedPersistentDB/releases) page.
+- Download the latest release from the [releases](https://github.com/jschmidt92/eXtendedPersistentDatabase/releases) page.
 - Extract @xpdb from the zip file and paste it into your Arma 3 folder and activate it within the Arma 3 Launcher.
 
 ## Usage
