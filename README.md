@@ -1,6 +1,6 @@
 # eXtended Persistent DB
 
-![CoverImage](images/Cover_Image.jpg)
+![CoverImage](images/cover_image.jpg)
 
 <p align="center">
 	<a href="https://github.com/jschmidt92/eXtendedPersistentDB/releases/latest">
