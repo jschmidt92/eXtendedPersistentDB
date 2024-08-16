@@ -1,4 +1,4 @@
-# eXtended Persistent Database
+# eXtended Persistent DB
 
 ![CoverImage](images/cover_image.jpg)
 
@@ -16,7 +16,7 @@
 
 ## Description
 
-eXtended Persistent Database is the mod version of [Arma Persistent Core System](https://github.com/NikolaiF90/ArmaPersistentCoreSystem)
+eXtended Persistent DB is the mod version of [Arma Persistent Core System](https://github.com/NikolaiF90/ArmaPersistentCoreSystem)
 
 ## Features
 
