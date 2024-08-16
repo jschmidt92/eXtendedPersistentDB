@@ -1,0 +1,1 @@
+[] call xpdb_db_fnc_init;

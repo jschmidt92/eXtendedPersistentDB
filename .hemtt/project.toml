@@ -1,0 +1,14 @@
+name = "eXtended Persistent DB"
+author = "J. Schmidt"
+prefix = "xpdb"
+mainprefix = "z"
+
+[files]
+include = [
+    "xpdb_version.json",
+    "*.paa",
+    "missionTemplate/**/*",
+]
+
+[version]
+git_hash = 0 # Disabled
