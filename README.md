@@ -1,4 +1,4 @@
-# eXtended Persistent DB
+# eXtended Persistent Database
 
 ![CoverImage](images/cover_image.jpg)
 
