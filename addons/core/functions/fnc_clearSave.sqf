@@ -28,7 +28,7 @@
  * Public: Yes
  */
 
-params [["_slot", nil, [0]]];
+params [["_slot", 0, [0]]];
 
 [EGVAR(db,debug), "xpdb_core_fnc_clearSave", "Clearing save...", true] call EFUNC(utils,debug);
 

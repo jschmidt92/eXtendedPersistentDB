@@ -30,8 +30,6 @@
  * Public: Yes
  */
 
-diag_log _this;
-
 params [["_key", "", [""]], ["_value", "", [[], 0, "", false, createHashMap]], ["_slot", 0, [0]]];
 
 private _hashKey = format ["%1.%2.%3", EGVAR(db,prefix), _slot, _key];
@@ -45,11 +43,9 @@ if (_value isEqualType []) then {
     _hashMap = createHashMapFromArray _value
 };
 
-// if (_value isEqualType []) then {
-//     _hashMap = createHashMapFromArray _value
-// } else {
-//     _hashMap set [_key, _value];
-// };
+if (!(_value isEqualType createHashMap) && !(_value isEqualType []) && !(_value isEqualTo createHashMap)) then {
+    _hashMap set [_key, _value];
+};
 
 _hashMap set ["hashKey", _hashKey];
 

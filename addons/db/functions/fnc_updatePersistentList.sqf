@@ -40,7 +40,7 @@ lbClear _listID;
 [EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "Loading slots from profileNamespace...", false] call EFUNC(utils,debug);
 private _slotArray = profileNamespace getVariable ["xpdb_db_pListKey", EGVAR(db,slots)];
 
-if (isNil "_slotArray" || count _slotArray == 1) then {
+if (isNil "_slotArray" || count _slotArray <= 1) then {
 	[EGVAR(db,debug), "xpdb_db_fnc_updatePersistentList", "No saves found, using default slot instead.", false] call EFUNC(utils,debug);
 	EGVAR(db,slots) = EGVAR(db,defaultSlots);
 } else {

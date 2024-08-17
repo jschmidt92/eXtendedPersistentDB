@@ -28,7 +28,7 @@
  * Public: Yes
  */
 
-params [["_slot", nil, [0]]];
+params [["_slot", 0, [0]]];
 
 [EGVAR(db,debug), "xpdb_save_fnc_game", format ["Saving progress to slot '%1'...", _slot], true] call EFUNC(utils,debug);
 

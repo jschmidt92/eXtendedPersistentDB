@@ -33,7 +33,7 @@ if (EGVAR(db,debug) == 1) then { EGVAR(db,debug) = true; } else { EGVAR(db,debug
 [EGVAR(db,debug), "xpdb_db_fnc_config", format ["Configuring '%1'...", Scenario_Name], true] call EFUNC(utils,debug);
 
 EGVAR(db,host) = player;
-EGVAR(db,prefix) = "XPDB_ARMADBCORE";
+EGVAR(db,prefix) = "XPDB_ARMAEXPDB";
 EGVAR(db,saveInterval) = 600;
 
 EGVAR(db,conts) = [];
