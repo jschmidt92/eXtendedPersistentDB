@@ -17,7 +17,6 @@
  *
  * Arguments:
  * 0: ID of Slot <SCALAR> (default: 0)
- * 1: Unscheduled environment <BOOL> (default: false)
  *
  * Return Value:
  * N/A
@@ -46,6 +45,7 @@ private _loadEntries = "true" configClasses (_config);
     private _entryName = configName _x;
     private _functionName = getText (_x >> "function");
     private _args = getArray (_x >> "args");
+    private _scheduled = getNumber (_x >> "scheduled") == 1;
     
     if (_functionName != "") then {
         private _function = call compile _functionName;
@@ -53,9 +53,14 @@ private _loadEntries = "true" configClasses (_config);
 
         if (!isNil "_savedData") then {
             _args pushBack _savedData;
-            _args call _function;
 
-            [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Loading '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+            if (_scheduled) then {
+                _args spawn _function;
+                [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Loading '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+            } else {
+                _args call _function;
+                [EGVAR(db,debug), "xpdb_load_fnc_custom", format ["Loading '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+            };
         };
     };
 } forEach _loadEntries;

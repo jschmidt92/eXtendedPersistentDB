@@ -17,7 +17,6 @@
  *
  * Arguments:
  * 0: ID of Slot <SCALAR> (default: 0)
- * 1: Unscheduled environment <BOOL> (default: false)
  *
  * Return Value:
  * N/A
@@ -45,14 +44,25 @@ private _saveEntries = "true" configClasses (_config);
     private _entryName = configName _x;
     private _functionName = getText (_x >> "function");
     private _args = getArray (_x >> "args");
+    private _scheduled = getNumber (_x >> "scheduled") == 1;
     
     if (_functionName != "") then {
         private _function = call compile _functionName;
-        private _result = _args call _function;
         
-        if (!isNil "_result") then {
-            [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Saving '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
-            [_entryName, _result, _slot] call EFUNC(core,saveData);
+        if (_scheduled) then {
+            private _result = _args spawn _function;
+
+            if (!isNil "_result") then {
+                [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Saving '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+                [_entryName, _result, _slot] call EFUNC(core,saveData);
+            };
+        } else {
+            private _result = _args call _function;
+        
+            if (!isNil "_result") then {
+                [EGVAR(db,debug), "xpdb_save_fnc_custom", format ["Saving '%1.%2.%3'", EGVAR(db,prefix), _slot, _entryName], false] call EFUNC(utils,debug);
+                [_entryName, _result, _slot] call EFUNC(core,saveData);
+            };
         };
     };
 } forEach _saveEntries;
